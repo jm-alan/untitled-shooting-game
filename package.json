@@ -1,0 +1,38 @@
+{
+  "name": "untitled-shooting-game",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "tauri": "tauri"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.31.0",
+    "@react-three/eslint-plugin": "^0.1.2",
+    "@react-three/fiber": "^9.2.0",
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-opener": "^2",
+    "clsx": "^2.1.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "jotai": "^2.12.5",
+    "prettier": "^3.6.2",
+    "react": "^19",
+    "react-dom": "^19",
+    "sass-embedded": "^1.89.2",
+    "three": "^0.178.0",
+    "typescript-eslint": "^8.36.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.178.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.3",
+    "@tauri-apps/cli": "^2"
+  }
+}

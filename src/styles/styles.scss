@@ -1,0 +1,33 @@
+@use "./colors" as c;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  transition-property: background;
+  transition-duration: 150ms;
+  transition-timing-function: ease-in-out;
+  background: linear-gradient(to bottom right, lightgray, c.$dark-gray);
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  color: white;
+
+  &:active {
+    background: linear-gradient(to bottom right, c.$dark-gray, gray);
+  }
+}
+
+input,
+button {
+  outline: none;
+  border: none;
+}

@@ -1,0 +1,85 @@
+@use "styles";
+
+main {
+  position: relative;
+  width: 100svw;
+  height: 100svh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+
+  & > * {
+    transition-property: opacity;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+  }
+
+  & > div#loading-container {
+    z-index: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+
+    & > span {
+      color: white;
+    }
+
+    & > span#main-title {
+      width: 100%;
+      padding: 0px 2rem;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      font-size: 2rem;
+    }
+  }
+
+  & > #surface {
+    z-index: 1;
+    opacity: 0;
+  }
+
+  & > div#joystick-outer {
+    --outer-side: 35svw;
+    --half-outer: calc(var(--outer-side) / 2);
+    opacity: 0;
+    z-index: 1;
+    position: absolute;
+    width: var(--outer-side);
+    height: auto;
+    aspect-ratio: 1;
+    background-color: black;
+    border-radius: 50%;
+    top: calc(75svh - var(--half-outer));
+    left: calc(50svw - var(--half-outer));
+
+    & > div#joystick-inner {
+      --inner-side: 12svw;
+      --half-inner: calc(var(--inner-side) / 2);
+      position: absolute;
+      background-color: lightgray;
+      width: var(--inner-side);
+      height: auto;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      top: calc(50% - var(--half-inner));
+      left: calc(50% - var(--half-inner));
+    }
+  }
+
+  &.ready {
+    & > div#loading-container {
+      opacity: 0;
+    }
+
+    & > #surface,
+    & > div#joystick-outer {
+      opacity: 0.7;
+    }
+  }
+}
