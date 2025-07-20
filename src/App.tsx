@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { Canvas } from "@react-three/fiber";
 import { useRef, useState, useEffect, useCallback } from "react";
 
-import Floor from "./Floor";
+import Floor from "./components/Floor";
 import Player from "./components/Player";
 import Joystick from "./components/Joystick";
 import useCoords from "./util/useCoords";
@@ -18,6 +18,7 @@ import {
 
 import "./App.scss";
 import mutable from "./state/mutable";
+import Engine from "./Engine";
 
 const widthUpscaleCeil = 720;
 const heightUpscaleCeil = 1280;
@@ -106,6 +107,11 @@ function App() {
       >
         {ready ? (
           <>
+            <Engine />
+            <ambientLight
+              color="white"
+              intensity={0.25}
+            />
             <Player position={[0, 0, -11]} />
             <Floor position={[0, 0, -12]} />
           </>

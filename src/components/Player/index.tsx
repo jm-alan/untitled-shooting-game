@@ -1,25 +1,19 @@
-import { useRef, useState } from "react";
-import { Mesh, PointLight } from "three";
+import { useState } from "react";
 import { useFrame } from "@react-three/fiber";
+import { Mesh, PointLight } from "three";
 
-import Cube from "../Cube";
+import LitHero from "../LitHero";
 import mutable from "../../state/mutable";
 
 type Props = {
   readonly position: [number, number, number];
 };
 
-export default function Player({
-  position: [posX, posY, posZ],
-  position,
-}: Props) {
-  const pointRef = useRef<PointLight>(null);
-
+export default function Player({ position }: Props) {
   const [cubeMesh, setCubeMesh] = useState<Mesh | null>(null);
+  const [pointLight, setPointLight] = useState<PointLight | null>(null);
 
   useFrame(() => {
-    const pointLight = pointRef.current;
-
     if (!cubeMesh || !pointLight) {
       return;
     }
@@ -31,22 +25,11 @@ export default function Player({
   });
 
   return (
-    <>
-      <ambientLight
-        color="white"
-        intensity={0.25}
-      />
-      <pointLight
-        ref={pointRef}
-        position={[posX, posY, posZ + 2]}
-        color="cyan"
-        intensity={500}
-        decay={5}
-      />
-      <Cube
-        takeRef={setCubeMesh}
-        position={position}
-      />
-    </>
+    <LitHero
+      color="cyan"
+      position={position}
+      onCube={setCubeMesh}
+      onLight={setPointLight}
+    />
   );
 }
