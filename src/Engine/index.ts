@@ -1,13 +1,14 @@
+import { useMemo } from "react";
+import { useFrame } from "@react-three/fiber";
 import { useAtomValue } from "jotai";
+
+import state from "../state/mutable";
 import {
   actionFours,
   actionMap,
   actionOnes,
   actionTwos,
 } from "../state/immutable";
-import { useFrame } from "@react-three/fiber";
-import { useMemo } from "react";
-import state from "../state/mutable";
 
 export default function Engine() {
   const ones = useAtomValue(actionOnes);
@@ -36,7 +37,7 @@ export default function Engine() {
     const aList = actionSelectors[state.actionSelect];
 
     for (let i = aList.length; i--; ) {
-      actions[aList[i]]();
+      actions[aList[i]]?.();
     }
     state.actionSelect = ((state.actionSelect + 1) % 4) as ActionSelect;
   });

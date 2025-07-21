@@ -5,6 +5,7 @@ type State = {
     x: number;
     y: number;
   };
-  walkSpeed: number;
+  playerSpeed: number;
+  enemySpeed: number;
   actionSelect: ActionSelect;
 };

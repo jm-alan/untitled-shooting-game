@@ -2,10 +2,14 @@ import clsx from "clsx";
 import { Canvas } from "@react-three/fiber";
 import { useRef, useState, useEffect, useCallback } from "react";
 
+import state from "./state/mutable";
 import Floor from "./components/Floor";
 import Player from "./components/Player";
+import Engine from "./Engine";
 import Joystick from "./components/Joystick";
+import Entities from "./Entities";
 import useCoords from "./util/useCoords";
+import { floorStart } from "./util/constants";
 import { useAtomValue, useAtom } from "jotai";
 import {
   joystickSnapLeft,
@@ -17,8 +21,6 @@ import {
 } from "./state/immutable";
 
 import "./App.scss";
-import mutable from "./state/mutable";
-import Engine from "./Engine";
 
 const widthUpscaleCeil = 720;
 const heightUpscaleCeil = 1280;
@@ -85,8 +87,8 @@ function App() {
   }, [ready]);
 
   useEffect(() => {
-    mutable.moveMul.x = joystickX;
-    mutable.moveMul.y = joystickY;
+    state.moveMul.x = joystickX;
+    state.moveMul.y = joystickY;
   }, [joystickX, joystickY]);
 
   return (
@@ -108,12 +110,13 @@ function App() {
         {ready ? (
           <>
             <Engine />
+            <Entities />
             <ambientLight
               color="white"
               intensity={0.25}
             />
-            <Player position={[0, 0, -11]} />
-            <Floor position={[0, 0, -12]} />
+            <Player />
+            <Floor position={floorStart} />
           </>
         ) : null}
       </Canvas>

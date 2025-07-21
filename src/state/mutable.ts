@@ -3,7 +3,8 @@ const state: State = {
     x: 0,
     y: 0,
   },
-  walkSpeed: 0.25,
+  playerSpeed: 10,
+  enemySpeed: 3.5,
   actionSelect: 0,
 };
 

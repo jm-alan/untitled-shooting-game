@@ -14,9 +14,11 @@ export const joystickUnlocked = atom((get) => {
   return !!(snapLeft && snapTop);
 });
 
-export const entityMap = atom<Record<string, Entity>>({});
+export const entityMap = atom<Record<string, Entity | undefined>>({});
 export const activeEntities = atom<string[]>([]);
-export const actionMap = atom<Record<string, () => void>>({});
+export const actionMap = atom<Record<string, (() => void) | undefined>>({});
 export const actionOnes = atom<string[]>([]);
 export const actionTwos = atom<string[]>([]);
 export const actionFours = atom<string[]>([]);
+export const playerX = atom((get) => get(entityMap).player?.position[0] ?? 0);
+export const playerY = atom((get) => get(entityMap).player?.position[1] ?? 0);

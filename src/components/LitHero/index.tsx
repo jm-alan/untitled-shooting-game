@@ -1,10 +1,12 @@
 import { Mesh, PointLight } from "three";
-import Cube from "../Cube";
 import { useEffect, useRef } from "react";
 
+import Cube from "../Cube";
+
 type Props = {
-  readonly position: [number, number, number];
+  readonly position: readonly [number, number, number];
   readonly color: string;
+  readonly spin?: number;
   onLight?(light: PointLight): void;
   onCube?(mesh: Mesh): void;
 };
@@ -12,6 +14,7 @@ type Props = {
 export default function LitHero({
   position: [posX, posY, posZ],
   color,
+  spin = 1,
   position,
   onLight,
   onCube,
@@ -34,6 +37,7 @@ export default function LitHero({
         decay={5}
       />
       <Cube
+        spin={spin}
         takeRef={onCube}
         position={position}
       />
